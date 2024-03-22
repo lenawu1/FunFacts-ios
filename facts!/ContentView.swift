@@ -13,16 +13,22 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text("DID YOU KNOW?")
+                .font(.headline)
+                .padding(.bottom, 5)
             Image("lightbulb")
                 .imageScale(.small)
+                .padding(.bottom, 5)
             Text(facts[currentFactIndex].title)
-                            .padding()
-            Text("Click to see another cool fact!")
+                .padding()
+                .background(Color.yellow.opacity(0.2))
+                .cornerRadius(8)
+                .onTapGesture {
+                    currentFactIndex = Int.random(in: 0..<facts.count)
+                }
+            Text("Tap the fact to see another fact!")
+                .padding()
         }
-        .onTapGesture {
-            currentFactIndex = Int.random(in: 0..<facts.count)
-        }
-        .padding()
+        
     }
 }
 
